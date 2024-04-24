@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h6 class="font-18 fw-600">Applications</h6>
+  <div class="d-flex gap-2">
+    <button type="button" class="transparent-bg  myBtn secondaryBtn"><i class="fas fa-filter me-2"></i>Filter <i class="fa-solid fa-chevron-down ms-2"></i></button>
+  </div>
+</div>
+<table-advanced [config]="tableConfig"
+                [columns]="tableColumns"
+                [data]="jobList"
+                [page]="pageNo"
+                [total]="total"
+                [limit]="limit"
+                (sortUpdated)="onSortChange($event)"
+                (pageUpdated)="onPageChange($event)">
+  <ng-template libTableAdvancedColumn="status" let-row="row">
+    <span [ngClass]="row?.status?.lookupBGColor && 'td-status'" [ngStyle]="{'background-color': row?.status?.lookupBGColor,color: row?.status?.lookupTextColor || '#000'}">
+      {{ row?.status?.lookupName }}
+    </span>
+  </ng-template>
+  <ng-template libTableAdvancedColumn="action" let-row="row">
+    <div ngbDropdown class="d-inline-block table-dropdown">
+      <i class="fa-solid fa-ellipsis-h font-20 cursor-pointer" ngbDropdownToggle></i>
+      <div ngbDropdownMenu class="dropdown-menu-end">
+        <button class="btn" ngbDropdownItem>View Details</button>
+        <button class="btn" ngbDropdownItem (click)="handleAdd(row)">Edit Job</button>
+        <button class="btn" ngbDropdownItem (click)="handleDelete(row)">Delete Job</button>
+      </div>
+    </div>
+  </ng-template>
+</table-advanced>

@@ -1,0 +1,90 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <!-- Add more columns as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-toggle="collapse" *ngFor="let item of items; let i = index" (click)="toggleAccordion(i)">
+      <td>{{ i + 1 }}</td>
+      <td>{{ item.column1 }}</td>
+      <td>{{ item.column2 }}</td>
+      <!-- Add more columns as needed -->
+      <td>
+        <ngb-accordion #myAccordion="ngbAccordion" [activeIds]="activeIds">
+          <ngb-panel id="item-{{ i }}">
+            <ng-template ngbPanelTitle>
+              <span class="card-title">Accordion Item {{ i + 1 }}</span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <!-- Content for the accordion item goes here -->
+              <p>Accordion Content for Item {{ i + 1 }}</p>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-striped">
+
+
+  <thead>
+
+
+    <tr>
+
+
+      <th scope="col">#</th>
+
+
+      <th scope="col">Title</th>
+
+
+      <th scope="col">Description</th>
+
+
+    </tr>
+
+
+  </thead>
+
+
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Collapsible Item 1</td>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+          Toggle
+        </button>
+      </td>
+    </tr>
+    <tr id="collapse-1" class="collapse">
+      <td colspan="3">
+        <div class="card card-body">
+          This is the collapsible content for Item 1.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Collapsible Item 2</td>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+          Toggle
+        </button>
+      </td>
+    </tr>
+    <tr id="collapse-2" class="collapse">
+      <td colspan="3">
+        <div class="card card-body">
+          This is the collapsible content for Item 2.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

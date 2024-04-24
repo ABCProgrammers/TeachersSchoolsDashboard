@@ -1,0 +1,16 @@
+<div class="side-nav-content">
+  <ul class="nested-menu">
+    <li>
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><i class="fa-solid fa-home"></i><span>Dashboard</span></a>
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/profile"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" routerLink="/jobs"><i class="fas fa-book"></i><span>Jobs</span></a>
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/applications"><i class="fa-solid fa-user"></i><span>Applications</span></a>
+    </li>
+  </ul>
+</div>

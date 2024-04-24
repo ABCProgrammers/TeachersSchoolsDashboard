@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand px-2">
+  <a *ngIf="!iscollapse" (click)="mainPage()" class="navbar-brand px-1">
+    <img width="172" src="/assets/images/logo-md.svg" alt="">
+  </a>
+  <button (click)="SideNavToggle()" [style.margin-left.px]="[marginleft]" class="btn btn-dark btn-circle">
+    <fa-icon [icon]="icArrowLeft"></fa-icon>
+  </button>
+  <div class="navbar-collapse px-3">
+    <div *ngIf="showTitle" class="page-Tile">
+      {{pageTitle}}
+    </div>
+  </div>
+  <div class="d-flex align-items-center gap-2">
+    <div ngbDropdown class="d-inline-block">
+      <div class="profile-image d-flex align-items-center justify-content-center" id="dropdownBasic2" ngbDropdownToggle>
+        <i class="fa-regular fa-image"></i>
+      </div>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="dropdown-menu-end">
+        <a routerLink="/profile" ngbDropdownItem>My Profile</a>
+      </div>
+    </div>
+  </div>
+</nav>

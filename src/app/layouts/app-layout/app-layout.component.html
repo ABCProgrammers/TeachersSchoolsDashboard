@@ -1,0 +1,9 @@
+<div class="container-fluid g-0 position-fixed top-0">
+  <app-top-bar></app-top-bar>
+  <main>
+    <app-side-bar></app-side-bar>
+    <div [ngClass]="{'display-area-shrink':isShrinked}" class="display-area px-3 py-4">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

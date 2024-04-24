@@ -1,0 +1,13 @@
+.file-item {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--green);
+  background: white;
+  max-width:100%;
+
+  label {
+    line-height: 1;
+    color: green;
+    font-weight: 600;
+  }
+}

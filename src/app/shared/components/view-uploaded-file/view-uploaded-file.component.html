@@ -1,0 +1,38 @@
+<div class="modal-body p-2">
+  <!--EXISTING FILE-->
+  <ng-container *ngIf="!data?.isUploaded;else newlyUploaded">
+    <ng-container *ngIf="file;else noFile">
+      <ng-container *ngIf="(fileType == 'png' || fileType == 'jpeg' || fileType == 'jpg');else pdf">
+        <img class="w-100" [src]="file" />
+      </ng-container>
+      <ng-template #pdf>
+        <div class="d-flex justify-content-center flex-column align-items-center">
+          <img height="80" width="80" src="/assets/images/pdf.png" alt="" />
+          <br />
+          <a class="text-decoration-none text-capitalize" href="{{file}}" target="_blank">click to open pdf </a>
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-template #noFile>
+      <p class="mx-0 my-3">No attachemnt...</p>
+    </ng-template>
+  </ng-container>
+  <!--NEWLY UPLOADED FILE-->
+  <ng-template #newlyUploaded>
+    <ng-container *ngIf="(fileType == 'image/png' || fileType == 'image/jpeg' || fileType == 'image/jpg');else pdf">
+      <img class="w-100" [src]="file" />
+    </ng-container>
+    <ng-template #pdf>
+      <div class="d-flex justify-content-center flex-column align-items-center">
+        <img height="80" width="80" src="/assets/images/pdf.png" alt="" />
+        <br />
+        <a class="text-decoration-none text-capitalize" [href]="file" target="_blank">click to open pdf </a>
+      </div>
+    </ng-template>
+  </ng-template>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="myBtn secondaryBtn" (click)="_activeModal.close('Close click')">
+      Close
+    </button>
+  </div>
+</div>

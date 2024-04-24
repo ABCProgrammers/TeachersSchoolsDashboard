@@ -1,0 +1,115 @@
+<div class="my-card">
+  <div class="row">
+    <div class="col-6 mb-3">
+      <div class="profile-image d-flex align-items-center justify-content-center">
+        <i class="fa-regular fa-image fa-3x"></i>
+      </div>
+    </div>
+    <div class="col-6 mb-3 d-flex justify-content-center align-items-end gap-2 flex-column">
+      <label class="input-label mb-0" for="active">Status</label>
+      <div class="form-switch">
+        <input class="form-check-input custom-switch" type="checkbox" id="active" />
+      </div>
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">English Name</label>
+      <input type="text" class="form-control form-input" placeholder="English Name" />
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Arabic Name</label>
+      <input type="text" class="form-control form-input" placeholder="Arabic Name" />
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Institute Type</label>
+      <div class="input-dropdown">
+        <ng-select placeholder="Select Institute Type" [items]="instituteTypes"
+                   bindLabel="text"
+                   bindValue="value">
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Country</label>
+      <div class="input-dropdown">
+        <ng-select placeholder="Select Country" [items]="instituteTypes"
+                   bindLabel="text"
+                   bindValue="value">
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">City</label>
+      <div class="input-dropdown">
+        <ng-select placeholder="Select City" [items]="instituteTypes"
+                   bindLabel="text"
+                   bindValue="value">
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">District</label>
+      <div class="input-dropdown">
+        <ng-select placeholder="Select District" [items]="instituteTypes"
+                   bindLabel="text"
+                   bindValue="value">
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-6 mb-3">
+      <label class="input-label">Location</label>
+      <div class="input-group">
+        <input type="text" class="form-control form-input" placeholder="Select Institute Location">
+        <span class="input-group-text cursor-pointer" (click)="selectLocation()"><i class="fas fa-location gray-600"></i></span>
+      </div>
+    </div>
+    <div class="col-6 mb-3">
+      <label class="input-label">Address</label>
+      <input type="text" class="form-control form-input" placeholder="Enter Institute Address" />
+    </div>
+    <div class="col-12 mb-3">
+      <label class="input-label">Brief Description</label>
+      <textarea class="form-control form-textarea" rows="4" placeholder="Enter Brief Description..."></textarea>
+    </div>
+    <div class="col-12 mb-3">
+      <label class="input-label">Contact Person</label>
+      <input type="text" class="form-control form-input" placeholder="Enter Contact Person" />
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Contact Tel</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-mobile-screen-button"></i></span>
+        <input type="text" class="form-control form-input" placeholder="Contact Tel">
+      </div>
+    </div><div class="col-4 mb-3">
+      <label class="input-label">Contact Mobile</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="fas fa-mobile-screen-button"></i></span>
+        <input type="text" class="form-control form-input" placeholder="Contact Mobile">
+      </div>
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Contact Email</label>
+      <input type="text" class="form-control form-input" placeholder="Contact Email">
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Added Jobs</label>
+      <input type="text" class="form-control form-input disable-elm" placeholder="Added Jobs">
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Pending Jobs</label>
+      <input type="text" class="form-control form-input disable-elm" placeholder="Pending Jobs">
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Closed Jobs</label>
+      <input type="text" class="form-control form-input disable-elm" placeholder="Closed Jobs">
+    </div>
+    <div class="col-4 mb-3">
+      <label class="input-label">Created At</label>
+      <input type="text" class="form-control form-input disable-elm" value="3/12/2024" placeholder="Created At">
+    </div>
+    <div class="col-12 mt-4 d-flex justify-content-end gap-2">
+      <button type="button" class="myBtn secondaryBtn">Cancel</button>
+      <button type="button" class="myBtn primaryBtn">Update Profile</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="custom-table" *ngIf="columns?.length">
+  <div class="d-flex align-items-center justify-content-end gap-5 mb-3">
+    <ng-content select="[masterItem]"></ng-content>
+    <div class="d-flex gap-3" *ngIf="config?.importCSV || config?.exportCSV || config?.downloadTemplate">
+      <img (click)="eventData.emit({ template: 'template' })" *ngIf="config?.downloadTemplate" placement="bottom"
+           ngbTooltip="{{ config?.toolTipText?.template }}" class="cursor-pointer" src="/assets/images/template.svg" />
+      <img (click)="inputFile.click()" *ngIf="config?.importCSV" placement="bottom"
+           ngbTooltip="{{ config?.toolTipText?.import }}" class="cursor-pointer" src="/assets/images/import-csv.svg" />
+      <img (click)="eventData.emit({ export: 'export' })" *ngIf="config?.exportCSV" placement="bottom"
+           ngbTooltip="{{ config?.toolTipText?.export }}" class="cursor-pointer" src="/assets/images/export-csv.svg" />
+      <!--FILE INPUT-->
+      <input type="file" id="fileId" class="form-control" #inputFile (change)="onFileChange($event)" hidden />
+    </div>
+    <p class="txt-light" *ngIf="!config?.hideTotalRecord">
+      Total No. of records {{ total }}
+    </p>
+  </div>
+  <div class="scroll-table-mobile">
+    <div class="table-wrapper table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of columns" [width]="column.width">
+              <button [ngClass]="{
+                  'cursor-default': !column.canSort || !tempData.length
+                }" (click)="onSort(column)">
+                {{ column.label }}
+                <ng-container *ngIf="column.canSort && tempData?.length">
+                  <i [ngClass]="{'fa-sort-up': sort.direction === 'asc' && isSortColumnMatch(column),
+                'fa-sort-down': sort.direction === 'desc' && isSortColumnMatch(column),
+                'fa-sort': !isSortColumnMatch(column)}" class="fa-solid"></i>
+                </ng-container>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tempData; let i = index">
+            <td *ngFor="let column of columns;let idx=index">
+              <ng-container *ngTemplateOutlet="
+                    columnTemplates[column.key] || columnDefaultTemplate;
+                    context: {
+                      $implicit: getItemValue(item, column.key,idx),
+                      row: item,
+                      column: getColumnByKey(column.key),
+                      index: i,
+                    }
+                  "></ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="no-data d-flex align-items-center justify-content-center mb-3" *ngIf="!loading && !tempData?.length">
+        No data to display
+      </div>
+    </div>
+  </div>
+  <div class="paging-wrapper d-flex justify-content-between align-items-center"
+       *ngIf="config.paging && tempData.length && total > limit">
+    <h6 class="font-14 fw-600">
+      Showing
+      <span>
+        {{ page * limit - (limit - 1) }} -
+        {{ tempData.length === limit ? page * limit : total }}
+      </span>
+      from <span> {{ total }} </span> Records
+    </h6>
+    <ngb-pagination [collectionSize]="total" [page]="page" [pageSize]="limit" [maxSize]="3" [ellipses]="true"
+                    (pageChange)="onPageChange($event)" aria-label="Default pagination">
+    </ngb-pagination>
+  </div>
+</div>
+
+<ng-template #columnDefaultTemplate let-value let-row="row" let-column="column">
+  <div class="cell-default">
+    {{
+    column.isDate ? (value | date : column.format || "dd-MMM-YYYY") : value
+    }}
+  </div>
+</ng-template>

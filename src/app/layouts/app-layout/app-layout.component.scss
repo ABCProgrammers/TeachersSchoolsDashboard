@@ -1,0 +1,20 @@
+.display-area {
+  position: absolute;
+  left: 60px;
+  width: calc(100% - 60px);
+  transition: width 250ms ease-in;
+}
+
+.display-area-shrink {
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: width 250ms ease-in;
+  height: calc(100vh - 57px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @media (min-width: 320px) and (max-width: 576px) {
+    left: 0;
+    width: 100%;
+  }
+}

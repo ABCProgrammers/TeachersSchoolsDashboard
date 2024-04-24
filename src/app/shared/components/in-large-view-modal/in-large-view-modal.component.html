@@ -1,0 +1,10 @@
+<div class="modal-body p-2" ngbAutoFocus>
+  <!--EXISTING FILE-->
+  <ng-container *ngIf="data?.file">
+    <img class="w-100" [src]="data?.file" />
+  </ng-container>
+</div>
+<div class="modal-footer mt-3">
+  <button type="button" class="myBtn secondaryBtn" (click)="_activeModal.close('Close click')">Close</button>
+  <button *ngIf="data?.print" type="button" class="myBtn primaryBtn" (click)="print()" [disable]="!allowPrint">Print</button>
+</div>
